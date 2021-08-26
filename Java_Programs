@@ -1,0 +1,1959 @@
+*******************************************************************************************************************************************************************
+
+https://www.geeksforgeeks.org/competitive-programming-a-complete-guide/?ref=shm&fireglass_rsn=true
+
+https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/?ref=shm&fireglass_rsn=true
+
+https://www.geeksforgeeks.org/puzzles/?ref=shm&fireglass_rsn=true
+
+https://www.geeksforgeeks.org/data-structures/
+
+*******************************************************************************************************************************************************************
+Swap two numbers with third variable
+
+class Swap{
+ public static void main(String args[]){
+   int a = 10;
+   int b = 20;
+   System.out.println("Numbers before swapping are "+ a+" and "+b);
+   int temp = 0;
+   temp = a;
+   a = b;
+   b = temp;
+   System.out.println("Numbers after swapping are "+ a+" and "+b);
+  }
+}
+*******************************************************************************************************************************************************************
+Swap two numbers without third variable.
+
+class SwapWithoutThirdVariable{
+ public static void main(String args[]){
+    int a = 10;
+    int b = 20;
+    System.out.println("Numbers without swapping: "+ a +" and "+ b);
+    a = a + b;//10 + 20 = 30
+    b = a - b;//30 - 20 = 10
+    a = a - b;//30 - 10
+    System.out.println("Numbers after swapping: "+ a +" and "+ b);
+  }
+}
+*******************************************************************************************************************************************************************
+Find duplicate characters in a String and count Program
+
+import java.util.HashMap;
+import java.util.Map;
+public class CountCharacterInString {
+   public static void main(String[] args) { 
+     String s = "MADAM";
+     int counter = 1;
+     Map<Character, Integer> map = new HashMap<>();
+     for (int i = 0; i < s.length(); i++) { 
+        char c = s.charAt(i);
+        if (map.containsKey(c)) {
+            map.put(c, map.get(c) + 1);
+        } else {
+            map.put(c, counter);
+        } 
+     }
+    System.out.println(map);
+   }
+}
+{A=2, D=1, M=2}
+*******************************************************************************************************************************************************************
+
+Java Program to find common elements between two arrays
+
+
+import java.util.HashSet;
+import java.util.Set;
+public class CommonElementsInTwoArrays {
+ public static void main(String[] args) { 
+   int arr1[] = { 10, 34, 45, 89, 61 };
+   int arr2[] = { 10, 78, 99, 34, 55 };
+   Set<Integer> common = new HashSet<>();
+   for (int i = 0; i < arr1.length; i++) {
+      for (int j = 0; j < arr2.length; j++) {
+          if (arr1[i] == arr2[j]) {
+              common.add(arr1[i]);
+          }
+     }
+   } 
+   System.out.println(common);
+  }
+}
+
+[34, 10]
+
+
+*******************************************************************************************************************************************************************
+java program to find top two maximum numbers in a array
+
+
+public class MaximumTwoNumbersInArray {
+  public static void main(String[] args) {
+    int arr[] = { 10, 34, 45, 89, 61, 3 };
+    int firstMax = arr[0];
+    int secondMax = 0;
+    for (int i = 0; i < arr.length; i++) {
+      if (firstMax < arr[i]) {
+        secondMax = firstMax;
+        firstMax = arr[i];
+     } else if (secondMax < arr[i]) {
+        secondMax = arr[i];
+     }
+   } 
+   System.out.println(firstMax);
+   System.out.println(secondMax); 
+  }
+}
+89
+61
+*******************************************************************************************************************************************************************
+Reverse a string without using string functions
+
+public class ReverseStringWithoutStringMethod {
+ public static void main(String[] args) {
+    String s = "Vikas";
+    char c[] = s.toCharArray();
+    StringBuilder sb = new StringBuilder();
+    for (int i = c.length - 1; i >= 0; i--) {
+       sb.append(c[i]);
+     }
+    System.out.println(sb); 
+  }
+}
+sakiV
+
+*******************************************************************************************************************************************************************
+Java Fizzbuzz program
+public class Fizzbuzz {
+ public static void main(String[] args) {
+   for (int i = 1; i <= 100; i++) {
+     if (i % 3 == 0) {
+        System.out.println("Fizz");
+     } else if (i % 5 == 0) {
+        System.out.println("Buzz");
+     } else if (i % 15 == 0) {
+        System.out.println("FizzBuzz");
+     } else {
+        System.out.println(String.valueOf(i)); 
+     }
+   }
+ }
+}
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+Fizz
+16
+17
+Fizz
+19
+Buzz
+Fizz
+22
+23
+Fizz
+Buzz
+26
+Fizz
+28
+29
+Fizz
+31
+32
+Fizz
+34
+Buzz
+Fizz
+37
+38
+Fizz
+Buzz
+41
+Fizz
+43
+44
+Fizz
+46
+47
+Fizz
+49
+Buzz
+Fizz
+52
+53
+Fizz
+Buzz
+56
+Fizz
+58
+59
+Fizz
+61
+62
+Fizz
+64
+Buzz
+Fizz
+67
+68
+Fizz
+Buzz
+71
+Fizz
+73
+74
+Fizz
+76
+77
+Fizz
+79
+Buzz
+Fizz
+82
+83
+Fizz
+Buzz
+86
+Fizz
+88
+89
+Fizz
+91
+92
+Fizz
+94
+Buzz
+Fizz
+97
+98
+Fizz
+Buzz
+*******************************************************************************************************************************************************************
+Java program to find maximum repeated character from a file
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+public class MaximumRepeatedCharacterInFile { 
+ private static final String FILE_NAME = "C:\\Users\\krishnaggandu\\Desktop\\myText.txt";
+ public static void main(String[] args) {
+  try {
+      FileReader fr = new FileReader(FILE_NAME);
+      int ch;
+      Map<Character, Integer> map = new HashMap<Character, Integer>();
+      while ((ch = fr.read()) != -1) { 
+        if (map.containsKey((char) ch)) {
+            map.put((char) ch, map.get((char) ch) + 1);
+        } else { map.put((char) ch, 1);
+      }
+   }
+   fr.close(); 
+   System.out.println(map);
+  }
+  catch (IOException e) { 
+     e.printStackTrace(); 
+  }
+ }
+}
+*******************************************************************************************************************************************************************
+Remove specific char from String
+
+ public class Logics {
+   public static void main(String[] args) {
+     String s = "Vikash";
+     s = s.replace("h", "");
+     System.out.println(s);
+  }
+}
+
+*******************************************************************************************************************************************************************
+java program for singleton design pattern
+
+
+public class Singleton {
+   private static Singleton instance = null;
+   private Singleton() { 
+       // Don't remove
+   }
+   public static Singleton getInstance() {
+       if (instance == null) {
+           synchronized (Singleton.class) {   //if we want thread safe.
+                    if (instance == null) {
+                        instance = new Singleton();
+                    }
+           }
+       } 
+      return instance;
+    }
+ }
+ 
+ public class Test {
+ public static void main(String[] args) { 
+     Singleton singleton1 = Singleton.getInstance();
+     Singleton singleton2 = Singleton.getInstance();
+     if (singleton1 == singleton2) { 
+         System.out.println("Singleton");
+     } 
+  }
+}
+
+*******************************************************************************************************************************************************************
+Java Program to check prime number
+
+
+import java.util.Scanner;
+class Prime{
+ public static void main(String args[]){
+ System.out.println("Enter number to check prime number");
+ Scanner sc = new Scanner(System.in);
+ int num = sc.nextInt();
+ int counter = 0;
+ for(int i = 2; i < num; i++){
+ if(num % i == 0){
+ counter++;
+ }
+ }
+ if(counter == 0){
+ System.out.println(num+" is prime number");
+ }else{
+ System.out.println(num+" is not prime number");
+ }
+ }
+}
+*******************************************************************************************************************************************************************
+java program to print factorial of a number
+
+class Factorial{
+ public static void main(String args[]){
+   int num = 5;
+   int f = 1;
+   for(int i = 1; i <= num; i++){
+       f = f * i;
+   }
+     System.out.println(f);
+  }
+ }
+ 
+ *******************************************************************************************************************************************************************
+ java program to find maximum number in an array
+ 
+ 
+ class Maximum{
+ public static void main(String args[]){
+  int arr[] = new int[]{12, 34, 3 , 78, 6,890};
+  int max = arr[0];
+  for(int i : arr){
+    if(i > max){
+      max = i;
+   }
+ }
+    System.out.println("Maximum value is: "+max);
+ }
+}
+*******************************************************************************************************************************************************************
+java program to count the number of digits in an integer
+
+class Count{
+ public static void main(String args[]){
+   int num = 12345;
+   int counter = 0;
+   while(num != 0){
+    counter++;
+    num /= 10;
+  }
+   System.out.println(counter);
+ }
+}
+
+
+*******************************************************************************************************************************************************************
+java program to reverse a number
+
+class Reverse {
+ public static void main(String args[]){
+ int num = 12345;
+ int copy = num;
+ int reverseNumber = 0;
+ int mod = 0;
+ while(copy != 0){
+ mod = copy % 10;
+ reverseNumber = reverseNumber * 10 + mod;
+ copy = copy /10;
+ }
+ System.out.println("Original Number: "+num);
+ System.out.println("Reversed Number: "+reverseNumber);
+ }
+}
+
+Output:
+Original Number: 12345
+Reversed Number: 54321
+
+*******************************************************************************************************************************************************************
+java program to check palindrome number
+
+class Palindrome {
+ public static void main(String args[]){
+  int num = 121;
+  int copy = num;
+  int reverseNumber = 0;
+  int mod = 0;
+  while(copy != 0){
+     mod = copy % 10;
+     reverseNumber = reverseNumber * 10 + mod;
+     copy = copy /10;
+  }
+  if(num == reverseNumber){
+     System.out.println("Palindrome");
+   }else{
+      System.out.println("Not Palindrome");
+   }
+ }
+}
+*******************************************************************************************************************************************************************
+Java Program to print fibonacci series
+
+
+class Fibonacci {
+ public static void main(String args[]){
+   int p = 1;
+   int c= 1;
+   int n = p + c;
+   System.out.print(p +" "+c);
+   while(n < 50){
+     c = p ;
+     p = n;
+     n = p + c;
+     System.out.print(" "+n);
+ }
+ }
+}
+*******************************************************************************************************************************************************************
+
+java program to find minimum number in an array
+
+class Minimum{
+ public static void main(String args[]){
+   int arr[] = new int[]{12, 34, 3 , 78, 6,890};
+   int min = arr[0];
+   for(int i : arr){
+    if(i < min){
+      min = i;
+    }
+   }
+    System.out.println("Minimum value is: "+ min);
+ }
+}
+*******************************************************************************************************************************************************************
+java code to sort an array in ascending order
+
+class AsendingOrder{
+ public static void main(String args[]){
+   int arr[] = new int[]{12,34,5,89,76,1};
+   int temp = 0;
+   for(int i = 0; i<=arr.length-1;i++ ){
+     for(int j =i; j<arr.length; j++){
+        if(arr[i] > arr[j]){
+          temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+       }
+    }
+  }
+   for(int i= 0 ;i<arr.length; i++){
+        System.out.print(" "+arr[i]);
+   }
+ }
+}
+*******************************************************************************************************************************************************************
+Java Program to find sum of digits
+
+
+class SumOfDigit{
+ public static void main(String args[]){
+  int number = 12345;
+  int sum = 0;
+  int modulus = 0;
+  while(number != 0){
+    modulus = number % 10;
+    sum = sum + modulus;
+    number = number / 10;
+  }
+    System.out.println(sum);
+ }
+}
+*******************************************************************************************************************************************************************
+sum of factorial series program in java
+
+import java.util.Scanner;
+class SumOfFactorials{
+ public static void main(String args[]){
+ System.out.println("Enter Number");
+ Scanner sc = new Scanner(System.in);
+ int number = sc.nextInt();
+ int f = 1;
+ int sum = 0;
+ for(int i = 4; i >= 1; i--){
+ for(int j = i; j >= 1; j--){
+ f = f * j;
+ }
+ sum = sum + f;
+ f = 1;
+ }
+ System.out.println(sum);
+ }
+}
+
+
+another way
+
+
+  public static void main(String args[]){
+ System.out.println("Enter Number");
+ Scanner sc = new Scanner(System.in);
+ int number = sc.nextInt();
+  System.out.println(factRecursion(number));
+ }
+static int factRecursion(int a) {
+	 
+	 if(a==0)
+		 	return 1;
+	 return a*factRecursion(a-1);
+	 
+}
+
+*******************************************************************************************************************************************************************
+compress-a-string-aaabbccccd-to-a3b2c4d
+
+public class Poly {
+
+	public static void main(String[] args) {
+	    String a="aaaaaaaabbbbbbcccccccccccccd";
+	    char first=a.charAt(0);
+	    int recur=0;
+	    StringBuilder res=new StringBuilder();
+	    for (int i = 1; i <a.length(); i++) {
+	        if(first==a.charAt(i)){
+	           recur++;
+	        }
+	        else{
+	         if (recur>0)
+	         res.append(first).append(recur);
+	         recur=0;
+	         first=a.charAt(i);
+	        }
+	    }
+	    if (recur>0)
+	        res.append(first).append(recur);
+	    else
+	        res.append(first);
+	    System.out.println(res);
+	}
+
+}
+
+compress-a-string-aababbccdccd-to-a3b3c4d2 ?
+
+
+
+String str="axbcxbadxr";
+        char[] chArray = str.toCharArray();
+        int[] countArray=new int[255];
+        for(int i=0;i<chArray.length;i++) {
+            int in=chArray[i];
+            countArray[in]=countArray[in]+1;
+        }
+
+ 
+  StringBuffer sb = new StringBuffer();
+        for(int i=0;i<countArray.length-1;i++) {
+            if(countArray[i]!=0) {
+                System.out.println((char)i+":"+countArray[i]);
+				 sb.append((char)i);
+                sb.append(countArray[i]);
+            }
+        }
+System.out.println(sb.toString());
+
+
+output : a2b2c1d1r1x3
+*******************************************************************************************************************************************************************
+
+
+
+
+Features
+
+Java 4
+
+1) Assertion (Java 4) - it is used for testing
+
+Java 5
+
+1) For-each loop (Java 5)
+2) Varargs (Java 5)
+3) Static Import (Java 5)
+4) Autoboxing and Unboxing (Java 5)
+5) Enum (Java 5)
+6) Covariant Return Type (Java 5)
+7) Annotation (Java 5)
+8) Generics (Java 5)
+
+
+Java 6
+
+1) Instrumentation (premain method) (Java 6)
+
+
+Java 7
+
+1) String in switch statement (Java 7)
+2) Binary Literals (Java 7)
+3) The try-with-resources (Java 7)
+4) Caching Multiple Exceptions by single catch (Java 7)
+5) Underscores in Numeric Literals (Java 7)
+****************************************************************************************************************************
+Java 8
+https://www.javatpoint.com/java-8-features
+
+Java 8 Date/Time API (Java 8)
+Lambda Expressions (Java 8)   -> Lambda expression helps us to write our code in functional style. It is very useful in collection library in which it helps to iterate, filter and extract data.
+
+to bring functional interface in java
+Method References (Java 8) ->Method reference is used to refer method of functional interface . It is compact and easy form of lambda expression. Each time when you are using lambda expression to just referring a method, 
+								you can replace your lambda expression with method reference.
+Functional Interfaces (Java 8) --> An Interface that contains only one abstract method is known as functional interface. It can have any number of default and static methods. It can also declare methods of object class.
+
+Stream API (Java 8)  -->Java introduced a new class Optional in Java 8. It is a public final class which is used to deal with NullPointerException in Java application. We must import java.util package to use this class. 
+								It provides methods to check the presence of value for particular variable.
+Base64 Encode Decode (Java 8)
+Default Methods (Java 8)
+forEach() method(Java 8)
+Collectors(Java 8)
+StringJoiner(Java 8)
+Optional class (Java 8)
+Nashorn JavaScript (Java 8)
+Parallel Array Sorting (Java 8)
+Type Inference (Java 8)
+Method Parameter Reflection (Java 8)
+Type annotations and repeating annotations (Java 8)
+Java JDBC Improvements/Enhancements (Java 8)
+Java IO Improvement/Enhancements (Java 8)
+Java Concurrency Improvement/Enhancements (Java 8)
+
+
+Java 9
+
+private methods are allowd in interface
+
+Java 9 – Private Methods in Interface
+Java 9 Immutable Collections with Factory Methods
+java 9 try with resources
+
+*******************************************************************************************************************************************************************
+FunctionalInterface
+Lambda Expression
+Predefined functional interfaces
+
+
+		
+********************************************************************************************************************************************************************
+Find next greater number with same set of digits
+https://www.geeksforgeeks.org/find-next-greater-number-set-digits/
+Input:  n = "218765"
+Output: "251678"
+Input:  n = "1234"
+Output: "1243"
+Input: n = "4321"
+Output: "Not Possible"
+Input: n = "534976"
+Output: "536479"
+
+I) Traverse the given number from rightmost digit, keep traversing till you find a digit which is smaller than the previously traversed digit. For example, if the input number is “534976”, we stop at 4 because 4 is smaller than next digit 9. If we do not find such a digit, then output is “Not Possible”.
+II) Now search the right side of above found digit ‘d’ for the smallest digit greater than ‘d’. For “534976″, the right side of 4 contains “976”. The smallest digit greater than 4 is 6.
+III) Swap the above found two digits, we get 536974 in above example.
+IV) Now sort all digits from position next to ‘d’ to the end of number. The number that we get after sorting is the output. For above example, we sort digits in bold 536974. We get “536479” which is the next greater number for input 534976.
+
+// Java program to find next greater 
+// number with same set of digits. 
+import java.util.Arrays; 
+public class nextGreater 
+{ 
+	// Utility function to swap two digit 
+	static void swap(char ar[], int i, int j) 
+	{ 
+		char temp = ar[i]; 
+		ar[i] = ar[j]; 
+		ar[j] = temp; 
+	} 
+	// Given a number as a char array number[], 
+	// this function finds the next greater number. 
+	// It modifies the same array to store the result 
+	static void findNext(char ar[], int n) 
+	{ 
+		int i; 
+		
+		// I) Start from the right most digit 
+		// and find the first digit that is smaller 
+		// than the digit next to it. 
+		for (i = n - 1; i > 0; i--) 
+		{ 
+			if (ar[i] > ar[i - 1]) { 
+				break; 
+			} 
+		} 
+		
+		// If no such digit is found, then all 
+		// digits are in descending order means 
+		// there cannot be a greater number with 
+		// same set of digits 
+		if (i == 0) 
+		{ 
+			System.out.println("Not possible"); 
+		} 
+		else
+		{ 
+			int x = ar[i - 1], min = i; 
+			
+			// II) Find the smallest digit on right 
+			// side of (i-1)'th digit that is greater 
+			// than number[i-1] 
+			for (int j = i + 1; j < n; j++) 
+			{ 
+				if (ar[j] > x && ar[j] < ar[min]) 
+				{ 
+					min = j; 
+				} 
+			} 
+			// III) Swap the above found smallest 
+			// digit with number[i-1] 
+			swap(ar, i - 1, min); 
+			// IV) Sort the digits after (i-1) 
+			// in ascending order 
+			Arrays.sort(ar, i, n); 
+			System.out.print("Next number with same" + 
+									" set of digits is "); 
+			for (i = 0; i < n; i++) 
+				System.out.print(ar[i]); 
+		} 
+	} 
+	public static void main(String[] args) 
+	{ 
+		char digits[] = { '5','3','4','9','7','6' }; 
+		int n = digits.length; 
+		findNext(digits, n); 
+	} 
+} 
+
+
+
+
+******************************************************************************************************************************************************************
+generation of Password
+
+
+// Java code to explain how to generate random 
+// password 
+// Here we are using random() method of util 
+// class in Java 
+import java.util.*; 
+public class NewClass 
+{ 
+	public static void main(String[] args) 
+	{ 
+		// Length of your password as I have choose 
+		// here to be 8 
+		int length = 10; 
+		System.out.println(geek_Password(length)); 
+	} 
+	// This our Password generating method 
+	// We have use static here, so that we not to 
+	// make any object for it 
+	static char[] geek_Password(int len) 
+	{ 
+		System.out.println("Generating password using random() : "); 
+		System.out.print("Your new password is : "); 
+		// A strong password has Cap_chars, Lower_chars, 
+		// numeric value and symbols. So we are using all of 
+		// them to generate our password 
+		String Capital_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+		String Small_chars = "abcdefghijklmnopqrstuvwxyz"; 
+		String numbers = "0123456789"; 
+				String symbols = "!@#$%^&*_=+-/.?<>)"; 
+
+		String values = Capital_chars + Small_chars + 
+						numbers + symbols; 
+		// Using random method 
+		Random rndm_method = new Random(); 
+		char[] password = new char[len]; 
+		for (int i = 0; i < len; i++) 
+		{ 
+			// Use of charAt() method : to get character value 
+			// Use of nextInt() as it is scanning the value as int 
+			password[i] = 
+			values.charAt(rndm_method.nextInt(values.length())); 
+		} 
+		return password; 
+	} 
+} 
+
+Generating password using random() : 
+Your new password is : KHeCZBTM;-
+
+// Java code to explain how to generate random 
+// password 
+class uniquePassword 
+{ 
+public static long Code() //this code returns the unique 16 digit code 
+{ //creating a 16 digit code using Math.random function 
+	long code =(long)((Math.random()*9*Math.pow(10,15))+Math.pow(10,15)); 
+	return code; //returning the code 
+} 
+	//method to generate the password 
+	//by converting every two digits as an ascii value of a character 
+public static void main(String args[]) 
+{ 
+long code=Code();//function calling 
+String unique_password=""; 
+for (long i=code;i!=0;i/=100)//a loop extracting 2 digits from the code 
+	{ 
+		long digit=i%100;//extracting two digits 
+		if (digit<=90) 
+		digit=digit+32; 
+		//converting those two digits(ascii value) to its character value 
+		char ch=(char) digit; 
+		// adding 32 so that our least value be a valid character 
+		unique_password=ch+unique_password;//adding the character to the string 
+	} 
+	System.out.println("unique password ="+unique_password); 
+	} 
+} 
+// Here we are using random() method of util 
+// class in Java 
+
+Generating password using Math.random() and ascii code: 
+Your new password is : KHe%ZBT$
+******************************************************************************************************************************************************************
+generation of OTP(One Time Password)
+
+// Java code to explain how to generate OTP 
+// Here we are using random() method of util 
+// class in Java 
+import java.util.*; 
+public class NewClass 
+{ 
+	static char[] OTP(int len) 
+	{ 
+		System.out.println("Generating OTP using random() : "); 
+		System.out.print("You OTP is : "); 
+		// Using numeric values 
+		String numbers = "0123456789"; 
+		// Using random method 
+		Random rndm_method = new Random(); 
+		char[] otp = new char[len]; 
+		for (int i = 0; i < len; i++) 
+		{ 
+			// Use of charAt() method : to get character value 
+			// Use of nextInt() as it is scanning the value as int 
+			otp[i] = 
+			numbers.charAt(rndm_method.nextInt(numbers.length())); 
+		} 
+		return otp; 
+	} 
+	public static void main(String[] args) 
+	{ 
+		int length = 4; 
+		System.out.println(OTP(length)); 
+	} 
+} 
+
+Generating OTP using random() : 
+You OTP is : 5291
+
+// Java code to explain how to generate OTP 
+public class GenerateOTP { 
+//declaring a of return type String 
+//which on calling provides the otp 
+	public static String generateOTP() 
+	{ //int randomPin declared to store the otp 
+		//since we using Math.random() hence we have to type cast it int 
+		//because Math.random() returns decimal value 
+		int randomPin =(int) (Math.random()*9000)+1000; 
+		String otp = String.valueOf(randomPin); 
+		return otp; //returning value of otp 
+	} 
+			public static void main(String args[])//method to call and print otp 
+	{ 
+		String otpSting =generateOTP();//function calling 
+		System.out.println("OTP : "+otpSting); 
+	} 
+}// Here we are using Math.random() function. 
+// class in Java 
+
+Generating OTP using random() : 
+You OTP is : 5291
+
+
+******************************************************************************************************************************************************************
+Given a sequence of words, print all anagrams together
+
+Let us understand the steps with following input Sequence of Words: 
+"cat", "dog", "tac", "god", "act"
+1) Create two auxiliary arrays index[] and words[]. Copy all given words to words[] and store the original indexes in index[] 
+index[]:  0   1   2   3   4
+words[]: cat dog tac god act
+2) Sort individual words in words[]. Index array doesn’t change.
+index[]:   0    1    2    3    4
+words[]:  act  dgo  act  dgo  act
+3) Sort the words array. Compare individual words using strcmp() to sort
+index:     0    2    4    1    3
+words[]:  act  act  act  dgo  dgo
+4) All anagrams come together. But words are changed in words array. To print the original words, take index from the index array and use it in the original array. We get 
+"cat tac act dog god"
+
+// A Java program to print all anagrams together
+import java.util.Arrays;
+import java.util.Comparator;
+public class GFG {
+	// class for each word of duplicate array
+	static class Word {
+		String str; // to store word itself
+		int index; // index of the word in the
+		// original array
+		// constructor
+		Word(String str, int index)
+		{
+			this.str = str;
+			this.index = index;
+		}
+	}
+	// class to represent duplicate array.
+	static class DupArray {
+		Word[] array; // Array of words
+		int size; // Size of array
+		// constructor
+		public DupArray(String str[], int size)
+		{
+			this.size = size;
+			array = new Word[size];
+			// One by one copy words from the
+			// given wordArray to dupArray
+			int i;
+			for (i = 0; i < size; ++i) {
+				// create a word Object with the
+				// str[i] as str and index as i
+				array[i] = new Word(str[i], i);
+			}
+		}
+	}
+	// Compare two words. Used in Arrays.sort() for
+	// sorting an array of words
+	static class compStr implements Comparator<Word> {
+		public int compare(Word a, Word b)
+		{
+			return a.str.compareTo(b.str);
+		}
+	}
+	// Given a list of words in wordArr[],
+	static void printAnagramsTogether(String wordArr[],
+									int size)
+	{
+		// Step 1: Create a copy of all words present
+		// in given wordArr. The copy will also have
+		// original indexes of words
+		DupArray dupArray = new DupArray(wordArr, size);
+		// Step 2: Iterate through all words in
+		// dupArray and sort individual words.
+		int i;
+		for (i = 0; i < size; ++i) {
+			char[] char_arr = dupArray.array[i].str.toCharArray();
+			Arrays.sort(char_arr);
+			dupArray.array[i].str = new String(char_arr);
+		}
+		// Step 3: Now sort the array of words in
+		// dupArray
+		Arrays.sort(dupArray.array, new compStr());
+		// Step 4: Now all words in dupArray are together,
+		// but these words are changed. Use the index
+		// member of word struct to get the corresponding
+		// original word
+		for (i = 0; i < size; ++i)
+			System.out.print(wordArr[dupArray.array[i].index] + " ");
+	}
+	// Driver program to test above functions
+	public static void main(String args[])
+	{
+		String wordArr[] = { "cat", "dog", "tac", "god", "act" };
+		int size = wordArr.length;
+		printAnagramsTogether(wordArr, size);
+	}
+}
+// This code is contributed by Sumit Ghosh
+
+cat tac act dog god 
+
+// Java program to print anagrams
+// together using dictionary
+import java.util.*;
+public class FindAnagrams {
+	private static void printAnagrams(String arr[])
+	{
+		HashMap<String, List<String> > map = new HashMap<>();
+		// loop over all words
+		for (int i = 0; i < arr.length; i++) {
+			// convert to char array, sort and
+			// then re-convert to string
+			String word = arr[i];
+			char[] letters = word.toCharArray();
+			Arrays.sort(letters);
+			String newWord = new String(letters);
+			// calculate hashcode of string
+			// after sorting
+			if (map.containsKey(newWord)) {
+				map.get(newWord).add(word);
+			}
+			else {
+				// This is the first time we are
+				// adding a word for a specific
+				// hashcode
+				List<String> words = new ArrayList<>();
+				words.add(word);
+				map.put(newWord, words);
+			}
+		}
+		// print all the values where size is > 1
+		// If you want to print non-anagrams,
+		// just print the values having size = 1
+		for (String s : map.keySet()) {
+			List<String> values = map.get(s);
+			if (values.size() > 1) {
+				System.out.print(values);
+			}
+		}
+	}
+	public static void main(String[] args)
+	{
+		// Driver program
+		String arr[] = { "cat", "dog", "tac", "god", "act" };
+		printAnagrams(arr);
+	}
+}
+[cat, tac, act][dog, god]
+
+// Java code tp print all anagrams together
+import java.util.ArrayList;
+import java.util.HashMap;
+public class FindAnagrams {
+	private static ArrayList<ArrayList<String> >
+	solver(
+		ArrayList<String> list)
+	{
+		// Inner hashmap counts frequency
+		// of characters in a string.
+		// Outer hashmap for if same
+		// frequency characters are present in
+		// in a string then it will add it to
+		// the arraylist.
+		HashMap<HashMap<Character, Integer>,
+				ArrayList<String> >
+			map = new HashMap<HashMap<Character, Integer>,
+							ArrayList<String> >();
+		for (String str : list) {
+			HashMap<Character, Integer>
+				tempMap = new HashMap<Character, Integer>();
+			// Counting the frequency of the
+			// characters present in a string
+			for (int i = 0; i < str.length(); i++) {
+				if (tempMap.containsKey(str.charAt(i))) {
+					int x = tempMap.get(str.charAt(i));
+					tempMap.put(str.charAt(i), ++x);
+				}
+				else {
+					tempMap.put(str.charAt(i), 1);
+				}
+			}
+			// If the same frequency of chanracters
+			// are alraedy present then add that
+			// string into that arraylist otherwise
+			// created a new arraylist and add that string
+			if (map.containsKey(tempMap))
+				map.get(tempMap).add(str);
+			else {
+				ArrayList<String>
+					tempList = new ArrayList<String>();
+				tempList.add(str);
+				map.put(tempMap, tempList);
+			}
+		}
+		// Stores the result in a arraylist
+		ArrayList<ArrayList<String> >
+			result = new ArrayList<>();
+		for (HashMap<Character, Integer>
+				temp : map.keySet())
+			result.add(map.get(temp));
+		return result;
+	}
+	// Drivers Method
+	public static void main(String[] args)
+	{
+		ArrayList<String> list = new ArrayList<>();
+		list.add("cat");
+		list.add("dog");
+		list.add("ogd");
+		list.add("god");
+		list.add("atc");
+		System.out.println(solver(list));
+	}
+}
+// This code is contributed by Arijit Basu(ArijitXfx)
+[[cat, atc], [dog, ogd, god]]
+
+
+
+
+
+JWT--- >
+Spring Security
+Microservices
+cache mechanism
+Core java
+spring
+spring boot
+spring microservices
+hibernate
+annotations.
+LDAP
+Oauth2(new google one)
+authorization and authentication
+how will you imporve/maintain performance issues
+thread dump, heap dump.
+
+producer- consumer solution thread
+solid prinicpal 
+Design pattern -- signleton, factory,Java Strategy Pattern
+
+factory
+notification-- email, sms
+send(email)
+send(sms)
+
+Java Strategy Pattern
+
+collection.sort(list,comparator);
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+******************************************************************************************************************************************************************
+
+- What is Sprint boot ?
+	Spring - enterprise application
+	Boot - bootstrap
+	Spring boot makes it easy to create stand-alone, production-grade spring based application that you can "just run".
+	- What is Spring ?
+		Application Framework.
+		Programming and configuration model.
+		Infrastructure support.
+	- Problmes with Spring?
+		Huge framework.
+		Multiple setup steps.
+		Multiple Configuration steps.
+		Multiple build and deploy steps.
+	- Enter Spring Boot
+		Opinionated.
+		Convention over configuration
+		Stand alone.
+		Production ready.
+	- Setup
+		Java 8 SDK.
+		Spring STS.
+	- Java Dependencies
+		 we need to provide that jar name whatever we want in pom.xml
+	
+	
+	@SpringBootApplication
+	
+	SpringApplicaton.run(App.class,args)
+		Sets up default configuration.
+		Starts Spring application context.
+		Performs class path scan.
+		Starts Tomcat server.
+	
+	Starting a Spring Boot App	
+		Spring Initializr - 
+		Spring Boot CLI
+		STS IDE
+	Configuration
+	
+- Building an end to end app( controller, data layer, service layer)
+- Spring Boot Featuers
+- Configuration and customization
+
+
+
+Customizing Spring Boot
+	Application.properties.
+	
+
+	
+
+
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+******************************************************************************************************************************************************************
+https://www.geeksforgeeks.org/sql-tutorial/
+
+SQL
+Datatypes
+DDL|DML|TCL and DCL
+Transactions
+Views
+Comments
+Constraints
+Creating Roles
+Indexes,
+Sequences,
+Query processing
+CTE in SQL
+Trigger|student database
+Book manage database
+Introduction to NoSQL
+
+Data Definition Language(DDL)
+	->CREATE,ALTER,DROP,RENAME,TRUNCATE,COMMENT
+
+Data Manipulation Language(DML)
+	->SELECT,INSERT,UPDATE,DELETE,MERGE,CALL,EXPLAIN PLAN, LOCK TABLE.
+	
+Transaction Control Language(TCL)
+   -> COMIT,ROLLBACK,SAVEPOINT,SET TRANSACTION
+
+Data Control Language
+	->GRANT,REVOKE
+	
+	
+	
+	
+Query to find 2nd largest value in a column 
+
+Input: Table name- price_list
++-------------+--------+
+| Item        | Cost   |
++-------------+--------+
+| Apple       | 150    |
+| Banana      | 175    |
+| Mango       | 200    |
+| Pineapple   | 180    |
+
+SELECT MAX (column_name) FROM table_name WHERE column_name NOT IN (SELECT Max (column_name) FROM table_name); 
+
+
+select MAX(Cost) from price_list where Cost NOT IN (select MAX(COST) from price_list);
+
+select MAX(Cost) from price_list where Cost NOT IN (200);
+
+
+6th highest
+mysql> select * from ((select * from Employee 
+       ORDER BY `sal` DESC limit 6 ) AS T) 
+       ORDER BY T.`sal` ASC limit 1;
+	   
+Alternate use of Limit:
+select * from Employee ORDER BY `sal` DESC limit 5,1; // will return 6th highest 
+
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+collection diagram:
+
+http://www.falkhausen.de/Java-8/java.util/Collection-Hierarchy.html
+
+
+SOLID
+
+https://howtodoinjava.com/best-practices/5-class-design-principles-solid-in-java/
+
+https://java2blog.com/solid-principles-java/
+
+
+
+
+Data structure  - dbs learning hub
+
+https://dbslearninghub.sabacloud.com/Saba/Web_spf/A501PRD0041/common/profile/plans
+
+
+
+
+
+
+enabling functional programming.
+
+
+what is lambda experssoin   =? it is an anonymous function.
+
+how to write lambda experssion ?
+
+Labda expressions
+
+uses for concise code
+
+
+python
+LISP
+C
+c++
+ruby
+scala
+finally in java
+
+
+
+
+=>. it is an anonymous function	
+	nameless
+	without return type
+	without modifiers
+	
+public void m1(){
+syso("hello");
+}
+
+(){
+syso(hello");
+}
+
+() ->{syso(Hello) }
+
+if body contains one line then curl braces are optional
+
+() -> syso(hello);
+
+
+public void add(int a,int b){
+
+syso(a+b);
+}
+
+
+(int a, int b) -> syso(a+b);
+
+compiler automatically specifies the data type, so no need to specify it. we will see in details later
+
+(a,b) -> syso(a+b);
+
+
+public int squarIt(int a){
+retutrn a*a;
+}
+
+
+(int a) -> {return a*a;}
+(int a) -> a*a;
+(a) -> a*a;
+if only one parameter then we are not required mention the parathesis.
+a -> a*a
+
+{{{{{ spcial case 
+
+n -> return n*n;   => invalid
+n -> {return n*n;};  => valid
+n -> {return n*n};  => invalid
+n -> {n*n};  = invalid  within curl braces we should use return keyword
+n -> n*n; => valid
+
+
+without curly braces we cannot use return keyword.
+within curly bracess if we want to return som value compulsory we should use return statement.
+
+
+
+
+
+}}}}}
+public int m1(String s){
+
+
+return sl.length();
+}
+
+
+(s) -> s.length();
+
+
+
+
+Functional Interface.
+
+word is old...
+
+
+Runnable = run()
+comparable(compareTO)
+comparator == compare()
+ActionListener ==>actionPerformed()
+calable ==> call();
+
+FI => an interface which contains single abstract method.
+
+default methods and stataic methods
+
+interface interf{
+
+publiv void m1();
+default void m2(){
+
+}
+public static void m3(){
+
+}
+
+
+} 
+
+
+any number static or any number default is acceptable ..
+only we need one abstract methods.
+
+@FunctionalInterface   => just specifiy explicitly an interface is functional interface. even if you don't mention also ok.
+but if you added annotation then we have to fallow the function interface rules(one abstract method)
+
+@FunctionalInterface
+interface i{
+
+default void m2(){
+
+}
+public static void m3(){
+
+}
+
+}
+
+we will get compile time error because no abstract method
+
+@FunctionalInterface
+interface i{
+public void m1();
+public void m4();
+default void m2(){
+
+}
+public static void m3(){
+
+}
+
+}
+we will get compile time error , there are more than one abstract method
+
+
+@FunctionalInterface
+interface i{
+public void m1();
+
+}
+@FunctionalInterface
+interface ii extends i{
+
+}
+
+is it valid or not ?
+
+it's valid, function interface is valid in inheritance concept.
+
+
+child interface has inherited m1() so it's valid.
+
+@FunctionalInterface
+interface ii extends i{
+public void m1();
+}
+
+valid 
+
+@FunctionalInterface
+interface ii extends i{
+public void m2();
+}
+
+inValid -- child class has more than one abstract method.
+
+
+
+
+interface i{
+public void m1();
+}
+class demo implements i{
+
+
+public void m1(){
+
+syso("hello");
+}
+
+//()->syso(hello);
+}
+
+
+class Test{
+
+
+main(){
+
+Demo d = new Demo();
+d.m1();   // valid
+
+I i = new Demo();  // parent reference can use to hold child object.
+i.m1() // valid
+
+Lambda expression
+I i = () -> syso(hello);
+i.m1()
+i.m1()
+i.m1()
+i.m1()
+i.m1()
+
+() =>  functional interface has only one abstract method so it will call to that.
+
+}
+
+
+
+}
+
+another example
+
+public void add(int a, int b);
+
+
+I i = (a,b)-> syso(a+b);
+i.add(10,20)
+i.add(101,200)
+i.add(200,300)
+
+
+
+
+default  -- we will use default method to do not distrube for implementation classes.
+static methods -- if there is static methods better if we can define in interface instead class.
+
+functional interface
+predicate
+function
+consumer
+supplier
+
+
+Predicate :  conditional checks
+class A{
+main(){
+Predicate<Integer> p = i->i%2==0;
+syso(p.test(10);)
+syso(p.test(11);)
+}
+}
+
+
+write a predicate to check whether length of string is >5 or not ?
+Predciate<String> p = s->s.length()>5;
+p.test(Krishna);
+p.test(hyd");
+
+
+
+main(){
+String[] s ={"Krishna", "Ramu","Nagaraju","Dharvik","Anil"};
+Predicate<String> p =s->s.length()>5;  or s->s.legnth()%2==0;
+for(String s1:s){
+	if(p.test(s1){
+		syso(s1)
+	}
+}
+
+
+}
+
+we can use even and() , or(), negate()
+
+
+main(){
+int[] x= {0,5,19,15,20,25,30,50}
+Predicate<integer> p1=i->i%2==0
+Predicate<integer> p2=i->i>20;
+syso
+for(int x1: x){
+if(p1.and(p2).test(x1)){   //p1.or(p2).test(x1) // p1.test(x1) // p2.test(x1) // p1.negate().test(x1)
+
+syso(x1)
+}
+
+
+}
+
+
+
+}
+
+
+predicate -- it will return boolean value.  condition check
+
+Function : 
+input -> perform some operation and produce results
+
+i->i*i
+
+s-> s.length();
+
+return type can be anything then we can go to function.
+retunr type can be boolean then we can go to predicate.
+
+
+
+
+
+
+main(){
+
+Function<integer, integer> f1 = i-> 2*i;
+Function<String , integer> f2 = s->s.legnth();
+syos(f1.apply(2))
+syso(f2.apply("krishna")
+
+
+}
+
+
+Predciate<T> --> boolean
+Function<T,R>--> R type
+Consumer<T> --> void
+
+
+
+main(){
+
+
+Consumer<String> c = s->syso(s);
+c.accept("Krishna");
+c.accept("Java training classes");
+
+}
+
+main(){
+Consomer<Movie> c1 = m->syso(m.name+" ready to release");
+Consomer<Movie> c2 = m->syso(m.name+" released");
+Movie m= new Movie(crack);
+c.accept(m)
+}
+class Movie{
+
+String name;
+Movie(Strin name){
+this.name=name
+}
+
+}
+
+
+supplier
+
+take some input and perofme conditional check and returns boolean --> predicate
+take some input and perform some operation and return the result which is need not be boolean type --> function
+accept some input and perform required operation and not required to return anything  --> consumer
+
+Just supply my required objects and it wont't take any input --> supplier
+
+
+main(){
+Supplier<String> s =()->{
+String otp="";
+for(int i=0;i<6;i++){
+
+otp=otp+(int)(Math.random()*10);
+
+}
+return opt
+
+};
+syso(s.get());
+syso(s.get());
+syso(s.get());
+}
+
+
+
+}
+
+
+
+
+Predicate --> test();
+function -->apply()
+consumer --> accept()
+supplier --> get()
+
+
+
+
+method() 
+
+classname:: methodname
+objectname:: methodname
+
+
+
+
+Stream:
+
+collection -> if we want to represent the group of objects as a single entity then we should go for collection.
+stream -> if we want to process objects from the collection.
+
+wherever the collectio is there, then we can use the stream concept.
+
+Stream s = c.stream();
+java.util.stream package.
+
+al = new ArrayList<integer>();
+al.add(10)
+al.add(9)
+syso(al)
+List<Integer> l = al.stream().filter(i->i%2=0).collect(collectors.toList())
+syso(l)
+
+List<Integer> l = al.stream().map(i->i+5).collect(collectors.toList())
+
+
+filter(Predicate)
+map(function)
+
+what is the difference between predicate and function 
+
+predicate will return boolean
+funcation will return the any type.
+
+count()
+long l = al.stream().filter(i->i%2=0).count()
+
+
+List<Integer> l = al.stream().sorted().collect(collectors.toList())
+
+List<Integer> l = al.stream().sorted((i1,i2)->i1.compareTo(i2)).collect(collectors.toList())
+
+
+Integer l = al.stream().min((i1,i2)->i1.compareTo(i2)).get();
+
+Integer l = al.stream().max((i1,i2)->i1.compareTo(i2)).get();
+
+al.stream().forEach(i->{
+syso(the squar of i  is i*i)
+
+
+});
+
+
+
+Integer[] i = al.stream().toArray(Integer[]::new);
+
+Stream()
+filter();
+map();
+collect();
+count();
+sorted()
+sorted(Compareator())
+min(Comparator)
+max(comparator)
+forEach()
+toArray()
+
+
+***************************************************************************************************************************************************************
+https://www.programiz.com/dsa#:~:text=A%20data%20structure%20is%20a,efficient%20and%20optimized%20computer%20programs.
+
+https://towardsdatascience.com/8-common-data-structures-every-programmer-must-know-171acf6a1a42
+
+
+
+A data structure is a way of collecting and organizing data.
+Choosing the right data strucure impacts efficiency.
+**********************************************************************************************************************************************************************
+What is the difference between data structure and algorithm?
+
+Data Structure is about organising and managing data effectively such that we can perform specific operation efficiently, while Algorithm is a step-by-step procedure to be followed to reach the desired output. ... Steps in an algorithm can use one or many data structure(s) to solve a problem
+
+**********************************************************************************************************************************************************************
+
+https://towardsdatascience.com/8-common-data-structures-every-programmer-must-know-171acf6a1a42
+
+What are the types of data structures?
+8 Common Data Structures every Programmer must know. A quick introduction to 8 commonly used data structures. ...
+Arrays. An array is a structure of fixed-size, which can hold items of the same data type. ...
+Linked Lists. ...
+Stacks. ...
+Queues. ...
+Hash Tables. ...
+Trees. ...
+Heaps.
+**********************************************************************************************************************************************************************
+
+
+Few examples of Data Structures
+Linear Data Structure: Linked List, Stack, Queue, Array.
+Hierarchical data structures: Tree, Heap, Trie.
+Other Data Structures: HashMap, Graph, Matrix.
+**********************************************************************************************************************************************************************
+
+Few examples of Algorithms
+Sorting Algorithms: Merge Sort, Quick Sort, Tim Sort, etc.
+Searching Algorithms: Linear Search, Binary Search.
+Shortest Path Algorithms: Dijkstra’s algorithm, Bellman-Ford algorithm.
+
+**********************************************************************************************************************************************************************
+
+		StandardServiceRegistryBuilder standardServiceRegistryBuilder =new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml");
+    	String encryptedPWD = (String)standardServiceRegistryBuilder.getSettings().get("hibernate.connection.password");
+    	StandardServiceRegistry standardRegistry = 
+    			standardServiceRegistryBuilder.applySetting("hibernate.connection.password", TbmsUtil.decrypt("TBMS",encryptedPWD )).build();
+
+    	Metadata metaData = 
+    			new MetadataSources(standardRegistry).getMetadataBuilder().build();
+
+    	sessionFactory = metaData.getSessionFactoryBuilder().build();
+
+Pricing-data-processing(Application.java )
+
+@Value("${spring.datasource.url}")
+	private String dbUrl;
+	@Value("${spring.datasource.username}")
+	private String dbUsername;
+	@Value("${spring.datasource.password}")
+	private String dbPassword;
+
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
+		dataSource.setUrl(dbUrl);
+		dataSource.setUsername(dbUsername);
+		try {
+			dataSource.setPassword(TbmsUtil.decrypt("TBMS", dbPassword));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dataSource;
+	}
+
+https://www.ricston.com/blog/encrypting-properties-in-spring-boot-with-jasypt-spring-boot/
+
+
+******************************************************************************************************************************************************************
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+******************************************************************************************************************************************************************
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+******************************************************************************************************************************************************************
+
+
+******************************************************************************************************************************************************************
+
